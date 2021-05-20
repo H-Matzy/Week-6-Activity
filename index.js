@@ -1,16 +1,17 @@
 import { Header, Nav, Main, Footer } from "./components";
+import * as state from "./store";
 import { GalleryPictures, AddPicturesToGallery } from "./lib";
 
-function render() {
+function render(st) {
   document.querySelector("#root").innerHTML = `
-    ${Header()}
-    ${Nav()}
-    ${Main()}
+    ${Header(st)}
+    ${Nav(state.Links)}
+    ${Main(st)}
     ${Footer()}
   `;
   addEventListeners();
 }
-render();
+render(state.Home);
 
 // add menu toggle to bars icon in nav bar
 function addEventListeners() {
